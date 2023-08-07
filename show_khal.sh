@@ -1,6 +1,6 @@
 #!/bin/sh
 # Author:   Jan Philipp Köhler   
-# Date:     05.05.2023
+# Date:     05.08.2023
 #
 # Version:   0.1  
 # Description:
@@ -10,71 +10,52 @@
 # In Order to make this work make sure to have booth tools installed
 # and configured properly.
 #
+#
+#
+# Apps used:
+# Sync with vdirsyncer              found here: https://github.com/pimutils/vdirsyncer 
+# Show calendar with khal           found here: https://github.com/pimutils/khal
+# Html conversion is done with aha  found here: https://github.com/theZiz/aha
 
+# Parameters: 
 # 
 
-# calculate_sleep_offset
-# Gets the difference between the current time and the next run. 
-# Param 1: Time of the next run. (Format hh:mm)
-calculate_sleep_offset () 
-{
-    local current_time=$(date +%s)
-    local target_time=$(date -d '05/05/2023 $1' +%s)
+# Sync calendar events:
+vdirsyncer sync
 
-    local sleep_seconds=$(( $target_time - $current_time ))
-    sleep $sleep_seconds
+# Show the calendar / list of events and parse it into html:
+khal --color agenda | aha -n > work/agenda.html
 
-    return $sleep_seconds
-}
+# German localization:
+# Replace "Today" with "Heute" 
+sed -i s/Today/Heute/ work/agenda.html
+# Replace "Tomorrow" with "Morgen" 
+sed -i s/Tomorrow/Morgen/ work/agenda.html
 
-# MAIN:
+# Add current Date:
+date +'<span style="font-weight:bold;">Heute ist %A, der %d.%m.%Y</span>' > work/date.txt
 
-# determine startup parameters
-if [ $1 = '']
-then
-    echo "Not enough arguments. Please supply up to 3 refresh times like this: 05:00 12:00 18:00 "
-    echo "Or use -h or --help for help." #TODO Implement help!
+# Combine files to one:
+cat html/aha-header.tpl work/date.txt work/agenda.html html/aha-footer.tpl > work/output.html
 
-$refresh_time1=$1
-$refresh_time1=$2
-$refresh_time1=$3
+# Store output.html on the webserver:
+# This is optional and only for sort of debuging.
+# The path 
+<- HERE!
+/var/www + #TODO: Subfolder für www Pfad
 
-# determine first run:
-current_time=$(date +%H:%M)
-
-
-
-
-while true # Improve here!
-    
-    # invoke 1 timeslot
-    # calc time to wait
-    # wait
-    # show calender
-
-    # invoke 2 timeslot
-    # calc waittime
-    # wait
-    # show calender
-
-    # invoke 3 timeslot
-    # calc waittime
-    # wait
-    # show calender
-
-    # Sync & show results:
-    clear
-    # Sync with vdirsyncer 
-    # found here: https://github.com/pimutils/vdirsyncer 
-    vdirsyncer sync
-    clear 
-
-    # Show calendar with khal
-    # found here: https://github.com/pimutils/khal
-    echo ">---------<= Tagesübersicht =>---------<"  
-    khal -v CRITICAL  calendar 
-
-done
+# Generate png 
 
 #SOMEVAR='text stuff'  
 #echo "$SOMEVAR"
+
+#TODO: - webserver config 
+#TODO: - Cron Job + Doku
+#TODO: - Kindle Script + Cronjob
+#TODO: - Doku auf Github
+#TODO: - DEPLOY-Skript bauen
+
+Stuff:
+https://suebenit.com/de/sysadmin/server/raspi/raspberry-pi-als-webserver-mit-nginx.html
+
+sudo chromium-browser --headless --no-sandbox --disable-gpu --screenshot=test2.png test.html
