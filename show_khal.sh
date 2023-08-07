@@ -17,8 +17,8 @@
 # Show calendar with khal           found here: https://github.com/pimutils/khal
 # Html conversion is done with aha  found here: https://github.com/theZiz/aha
 
-# Parameters: 
-# 
+# Get Parameters from conf-file 
+source kindlecalendar.conf
 
 # Sync calendar events:
 vdirsyncer sync
@@ -39,10 +39,8 @@ date +'<span style="font-weight:bold;">Heute ist %A, der %d.%m.%Y</span>' > work
 cat html/aha-header.tpl work/date.txt work/agenda.html html/aha-footer.tpl > work/output.html
 
 # Store output.html on the webserver:
-# This is optional and only for sort of debuging.
-# The path 
-<- HERE!
-/var/www + #TODO: Subfolder für www Pfad
+# This is optional and only debuging the output of khal and aha.
+cp work/output.html ${host_web_server_file_location}/${host_webserver_subfolder}
 
 # Generate png 
 
