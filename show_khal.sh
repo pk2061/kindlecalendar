@@ -10,12 +10,11 @@
 # In Order to make this work make sure to have booth tools installed
 # and configured properly.
 #
-#
-#
 # Apps used:
 # Sync with vdirsyncer              found here: https://github.com/pimutils/vdirsyncer 
 # Show calendar with khal           found here: https://github.com/pimutils/khal
 # Html conversion is done with aha  found here: https://github.com/theZiz/aha
+# Conversion from html to png is done with chromium
 
 # Get Parameters from conf-file 
 source kindlecalendar.conf
@@ -43,17 +42,14 @@ cat html/aha-header.tpl work/date.txt work/agenda.html html/aha-footer.tpl > wor
 cp work/output.html ${host_web_server_file_location}/${host_webserver_subfolder}
 
 # Generate png 
+# This is using the chromium browser
+#TODO: Make this customizable for different chrome variants
+chromium-browser --headless --no-sandbox --disable-gpu --screenshot=work/output.png --window-size=600,800 work/output.html
 
-#SOMEVAR='text stuff'  
-#echo "$SOMEVAR"
+# Make it read-only for all
+chmod 644 work/output.png
 
-#TODO: - webserver config 
-#TODO: - Cron Job + Doku
-#TODO: - Kindle Script + Cronjob
-#TODO: - Doku auf Github
-#TODO: - DEPLOY-Skript bauen
+# Copy png-file to the webserver
+cp work/output.html ${host_web_server_file_location}/${host_webserver_subfolder}
 
-Stuff:
-https://suebenit.com/de/sysadmin/server/raspi/raspberry-pi-als-webserver-mit-nginx.html
-
-sudo chromium-browser --headless --no-sandbox --disable-gpu --screenshot=test2.png test.html
+# Now we are done here!
