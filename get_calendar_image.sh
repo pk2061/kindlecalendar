@@ -17,7 +17,7 @@ source kindlecalendar.conf
  rm /mnt/us/linkss/screensavers/output.png 
 
 # Get new screensaver image
-curl http://${host_server_address}/${host_webserver_subfolder}/output.png -o /mnt/us/linkss/screensavers/output.png
+curl http://"${host_server_address}"/"${host_webserver_subfolder}"/output.png -o /mnt/us/linkss/screensavers/output.png
 
 # Reboot the device for the new screensaver to take effect:
 reboot
