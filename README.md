@@ -10,3 +10,7 @@ A commandline based calendar for Kindle e-readers.
 
 Stuff:
 https://suebenit.com/de/sysadmin/server/raspi/raspberry-pi-als-webserver-mit-nginx.htm
+
+On kindle 
+
+create dir /mnt/us/kindlecalendar
