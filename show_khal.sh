@@ -1,11 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 # Author:   Jan Philipp Köhler   
-# Date:     05.08.2023
+# Date:     08.08.2023
 #
 # Version:   0.1  
 # Description:
 # This script firstly syncs your caledar entries with "vdirsyncer sync"
-# and the displays the calender with "khal -v CRITICAL  calendar".
+# and outputs the calender to the termnial with khal.
+# After that the output will be captured to html with aha and made nice with some html/css.
+# At last the html output is converted to a png-image file using chromium and put to the webserver,
+# where it can be picked up by the kindle client.
 #
 # In Order to make this work make sure to have booth tools installed
 # and configured properly.
@@ -42,6 +45,8 @@ cat html/aha-header.tpl work/date.txt work/agenda.html html/aha-footer.tpl > wor
 cp work/output.html ${host_web_server_file_location}/${host_webserver_subfolder}
 
 # Generate png 
+# Delete old file
+rm work/output.html
 # This is using the chromium browser
 #TODO: Make this customizable for different chrome variants
 chromium-browser --headless --no-sandbox --disable-gpu --screenshot=work/output.png --window-size=600,800 work/output.html
@@ -49,7 +54,11 @@ chromium-browser --headless --no-sandbox --disable-gpu --screenshot=work/output.
 # Make it read-only for all
 chmod 644 work/output.png
 
+# Delete old file
+rm ${host_web_server_file_location}/${host_webserver_subfolder}/output.png
+
 # Copy png-file to the webserver
-cp work/output.html ${host_web_server_file_location}/${host_webserver_subfolder}
+echo '${host_web_server_file_location}/${host_webserver_subfolder}'
+cp work/output.png ${host_web_server_file_location}/${host_webserver_subfolder}
 
 # Now we are done here!
