@@ -58,7 +58,7 @@ chmod 644 work/output.png
 rm ${host_web_server_file_location}/${host_webserver_subfolder}/output.png
 
 # Copy png-file to the webserver
-echo '${host_web_server_file_location}/${host_webserver_subfolder}'
+echo "${host_web_server_file_location}/${host_webserver_subfolder}"
 cp work/output.png ${host_web_server_file_location}/${host_webserver_subfolder}
 
 # Now we are done here!
