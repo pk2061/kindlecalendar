@@ -42,7 +42,7 @@ cat html/aha-header.tpl work/date.txt work/agenda.html html/aha-footer.tpl > wor
 
 # Store output.html on the webserver:
 # This is optional and only debuging the output of khal and aha.
-cp work/output.html ${host_web_server_file_location}/${host_webserver_subfolder}
+cp work/output.html "${host_web_server_file_location}"/"${host_webserver_subfolder}"
 
 # Generate png 
 # Delete old file
@@ -55,9 +55,9 @@ chromium-browser --headless --no-sandbox --disable-gpu --screenshot=work/output.
 chmod 644 work/output.png
 
 # Delete old file
-rm $"{host_web_server_file_location}"/"${host_webserver_subfolder}"/output.png
+rm "${host_web_server_file_location}"/"${host_webserver_subfolder}"/output.png
 
 # Copy png-file to the webserver
-cp work/output.png "${host_web_server_file_location}"/$"{host_webserver_subfolder}"
+cp work/output.png "${host_web_server_file_location}"/"${host_webserver_subfolder}"
 
 # Now we are done here!
