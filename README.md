@@ -14,3 +14,5 @@ https://suebenit.com/de/sysadmin/server/raspi/raspberry-pi-als-webserver-mit-ngi
 On kindle 
 
 create dir /mnt/us/kindlecalendar
+
+cp work/output.png /var/www/kindlecalendar
