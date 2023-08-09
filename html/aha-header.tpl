@@ -21,7 +21,6 @@
 
     span 
     { 
-        display:block;
         width:100%;
         word-wrap:break-word;
     }
