@@ -6,13 +6,31 @@
 <title>Kalender</title>
 <!-- Format the div-containers-->
 <style>
+    body
+    {
+        margin: 0px;
+    }
+
     div
     {
-        width:100% ;  
-        font-size: 3EM; 
-        font-family: 'Courier New', Courier, monospace; 
+        width:580px ;  
+        font-size: 2EM; 
         padding: 10px;
+        margin: 0px;
     }
+
+    span 
+    { 
+        display:block;
+        width:100%;
+        word-wrap:break-word;
+    }
+
+    pre
+    {
+        white-space: pre-wrap;
+    }
+    
     .header
     {
         color: white; background-color: black;
