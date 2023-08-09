@@ -22,6 +22,9 @@
 # Get Parameters from conf-file 
 source kindlecalendar.conf
 
+# Cleanup
+rm work/*
+
 # Sync calendar events:
 vdirsyncer sync
 
@@ -38,7 +41,7 @@ sed -i s/Tomorrow/Morgen/ work/agenda.html
 date +'<span style="font-weight:bold;">Heute ist %A, der %d.%m.%Y</span>' > work/date.txt
 
 # Combine files to one:
-cat html/aha-header.tpl work/date.txt work/agenda.html html/aha-footer.tpl > work/output.html
+cat html/aha-header.tpl work/date.txt work/agenda.html html/aha-footer.tpl >> work/output.html
 
 # Store output.html on the webserver:
 # This is optional and only debuging the output of khal and aha.
