@@ -41,15 +41,13 @@ sed -i s/Tomorrow/Morgen/ work/agenda.html
 date +'<span style="font-weight:bold;">Heute ist %A, der %d.%m.%Y</span>' > work/date.txt
 
 # Combine files to one:
-cat html/aha-header.tpl work/date.txt work/agenda.html html/aha-footer.tpl >> work/output.html
+cat html/aha-header.tpl work/date.txt aha-middle.tpl work/agenda.html html/aha-footer.tpl >> work/output.html
 
 # Store output.html on the webserver:
 # This is optional and only debuging the output of khal and aha.
 cp work/output.html "${host_web_server_file_location}"/"${host_webserver_subfolder}"
 
 # Generate png 
-# Delete old file
-rm work/output.html
 # This is using the chromium browser
 #TODO: Make this customizable for different chrome variants
 chromium-browser --headless --no-sandbox --disable-gpu --screenshot=work/output.png --window-size=600,800 work/output.html
