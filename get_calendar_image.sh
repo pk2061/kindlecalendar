@@ -14,7 +14,7 @@ Kindle Jailbrake            found also in the link provided above
 #TODO: Add Documentation
 
 # Get Parameters from conf-file 
-source kindlecalendar.conf
+source /mnt/us/kindlecalendar/kindlecalendar.conf
 
 # Delete current image
  rm /mnt/us/linkss/screensavers/output.png 
