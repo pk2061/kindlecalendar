@@ -50,7 +50,7 @@ cp ~/kindlecalendar/work/output.html "${host_web_server_file_location}"/"${host_
 # Generate png 
 # This is using the chromium browser
 #TODO: Make this customizable for different chrome variants
-chromium-browser --headless --no-sandbox --disable-gpu --screenshot=~/kindlecalendar/work/output.png --window-size=600,800 ~/kindlecalendar/work/output.html
+chromium-browser --headless --no-sandbox --disable-gpu --screenshot='kindlecalendar/work/output.png' --window-size=600,800 ~/kindlecalendar/work/output.html
 
 # Make it read-only for all
 chmod 644 ~/kindlecalendar/work/output.png
