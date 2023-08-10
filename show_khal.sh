@@ -29,16 +29,16 @@ rm ~/kindlecalendar/work/*
 vdirsyncer sync
 
 # Show the calendar / list of events and parse it into html:
-khal --color agenda | aha -n > work/agenda.html
+khal --color agenda | aha -n > ~/kindlecalendar/work/agenda.html
 
 # German localization:
 # Replace "Today" with "Heute" 
-sed -i s/Today/Heute/ work/agenda.html
+sed -i s/Today/Heute/ ~/kindlecalendar/work/agenda.html
 # Replace "Tomorrow" with "Morgen" 
-sed -i s/Tomorrow/Morgen/ work/agenda.html
+sed -i s/Tomorrow/Morgen/ ~/kindlecalendar/work/agenda.html
 
 # Add current Date:
-date +'<span style="font-weight:bold;">Heute ist %A, der %d.%m.%Y</span>' > work/date.txt
+date +'<span style="font-weight:bold;">Heute ist %A, der %d.%m.%Y</span>' > ~/kindlecalendar/work/date.txt
 
 # Combine files to one:
 cat ~/kindlecalendar/html/aha-header.tpl ~/kindlecalendar/work/date.txt ~/kindlecalendar/html/aha-middle.tpl ~/kindlecalendar/work/agenda.html ~/kindlecalendar/html/aha-footer.tpl > ~/kindlecalendar/work/output.html
@@ -50,7 +50,7 @@ cp ~/kindlecalendar/work/output.html "${host_web_server_file_location}"/"${host_
 # Generate png 
 # This is using the chromium browser
 #TODO: Make this customizable for different chrome variants
-chromium-browser --headless --no-sandbox --disable-gpu --screenshot=work/output.png --window-size=600,800 work/output.html
+chromium-browser --headless --no-sandbox --disable-gpu --screenshot=~/kindlecalendar/work/output.png --window-size=600,800 ~/kindlecalendar/work/output.html
 
 # Make it read-only for all
 chmod 644 ~/kindlecalendar/work/output.png
