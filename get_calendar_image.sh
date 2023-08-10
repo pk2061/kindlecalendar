@@ -8,6 +8,9 @@
 # and copies it into the screensaver folder.
 #
 # The kindle needs to be jailbreaked and the following tools need to be installed:
+ Kindle Screen Saver Hack   found here: https://wiki.mobileread.com/wiki/Kindle_Screen_Saver_Hack_for_all_2.x,_3.x_%26_4.x_Kindles
+Kindle Jailbrake            found also in the link provided above    
+
 #TODO: Add Documentation
 
 # Get Parameters from conf-file 

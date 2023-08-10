@@ -20,10 +20,10 @@
 # Conversion from html to png is done with chromium
 
 # Get Parameters from conf-file 
-source kindlecalendar.conf
+source ~/kindlecalendar/kindlecalendar.conf
 
 # Cleanup
-rm work/*
+rm ~/kindlecalendar/work/*
 
 # Sync calendar events:
 vdirsyncer sync
@@ -41,11 +41,11 @@ sed -i s/Tomorrow/Morgen/ work/agenda.html
 date +'<span style="font-weight:bold;">Heute ist %A, der %d.%m.%Y</span>' > work/date.txt
 
 # Combine files to one:
-cat html/aha-header.tpl work/date.txt html/aha-middle.tpl work/agenda.html html/aha-footer.tpl > work/output.html
+cat ~/kindlecalendar/html/aha-header.tpl ~/kindlecalendar/work/date.txt ~/kindlecalendar/html/aha-middle.tpl ~/kindlecalendar/work/agenda.html ~/kindlecalendar/html/aha-footer.tpl > ~/kindlecalendar/work/output.html
 
 # Store output.html on the webserver:
 # This is optional and only debuging the output of khal and aha.
-cp work/output.html "${host_web_server_file_location}"/"${host_webserver_subfolder}"
+cp ~/kindlecalendar/work/output.html "${host_web_server_file_location}"/"${host_webserver_subfolder}"
 
 # Generate png 
 # This is using the chromium browser
@@ -53,12 +53,12 @@ cp work/output.html "${host_web_server_file_location}"/"${host_webserver_subfold
 chromium-browser --headless --no-sandbox --disable-gpu --screenshot=work/output.png --window-size=600,800 work/output.html
 
 # Make it read-only for all
-chmod 644 work/output.png
+chmod 644 ~/kindlecalendar/work/output.png
 
 # Delete old file
 rm "${host_web_server_file_location}"/"${host_webserver_subfolder}"/output.png
 
 # Copy png-file to the webserver
-cp work/output.png "${host_web_server_file_location}"/"${host_webserver_subfolder}"
+cp ~/kindlecalendar/work/output.png "${host_web_server_file_location}"/"${host_webserver_subfolder}"
 
 # Now we are done here!
