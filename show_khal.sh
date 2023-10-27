@@ -4,9 +4,9 @@
 #
 # Version:   0.1  
 # Description:
-# This script firstly syncs your caledar entries with "vdirsyncer sync"
+# This script syncs your caledar entries with "vdirsyncer sync"
 # and outputs the calender to the termnial with khal.
-# After that the output will be captured to html with aha and made nice with some html/css.
+# After that, the output will be captured to html with aha and made nice with some html/css.
 # At last the html output is converted to a png-image file using chromium and put to the webserver,
 # where it can be picked up by the kindle client.
 #
@@ -29,7 +29,7 @@ rm ~/kindlecalendar/work/*
 vdirsyncer sync
 
 # Show the calendar / list of events and parse it into html:
-khal --color agenda | aha -n > ~/kindlecalendar/work/agenda.html
+khal --color list | aha -n > ~/kindlecalendar/work/agenda.html
 
 # German localization:
 # Replace "Today" with "Heute" 
