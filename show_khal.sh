@@ -31,6 +31,9 @@ vdirsyncer sync
 # Show the calendar / list of events and parse it into html:
 khal --color list | aha -n > ~/kindlecalendar/work/agenda.html
 
+#add empty row between days:
+sed -i s/Tomorrow/<b>Tomorrow/ ~/kindlecalendar/work/agenda.h
+
 # German localization:
 # Replace "Today" with "Heute" 
 sed -i s/Today/Heute/ ~/kindlecalendar/work/agenda.html
