@@ -175,9 +175,9 @@ This is how it looks like:
 
 
 ## TODOS:
-#TODO: - improve webserver config 
-#TODO: - improve Github documentation
-#TODO: - create a deploy script for the kindle
+- improve webserver config 
+- improve Github documentation
+- create a deploy script for the kindle
 
 
 Credits to MATT HEALY for inspiration! His Kindle projekt can be found here: https://matthealy.com/kindle
