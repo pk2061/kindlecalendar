@@ -34,7 +34,7 @@ if [ ! -f "/mnt/us/kindlecalendar/lock/$date_file" ]; then
     # Get new screensaver image:
     #TODO: Make config-file work here!
     #curl http://"${host_server_address}"/"${host_webserver_subfolder}"/output.png -o /mnt/us/linkss/screensavers/output.png
-    curl http://192.168.0.52/kindlecalendar/output.png -o /mnt/us/linkss/screensavers/output.png # <- Replace the http-address with your settings here!
+    curl http://<your host ip-address / dns-name here!>/kindlecalendar/output.png -o /mnt/us/linkss/screensavers/output.png # <- Replace the http-address with your settings here!
 
     # Log message for debug:
     result=$?
